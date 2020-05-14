@@ -1,11 +1,11 @@
 <script>
   import { filter, sort } from "../constants/functions.js";
 
-  export let FILTERS;
-  export let currentFilter = "All";
-  export let SORTS;
-  export let currentSort = "Title";
   export let TUNES;
+  export let FILTERS;
+  export let SORTS;
+  export let currentFilter = "All";
+  export let currentSort = "Title";
   $: sortedFilteredTunes = sort(filter(TUNES, currentFilter), currentSort);
 
   export function toggleSelected(tune) {
@@ -59,10 +59,12 @@
   }
 
   select {
+    margin: 0;
     border: none;
   }
   option {
     user-select: none;
+    font-size: 16px;
   }
 
   ul {
