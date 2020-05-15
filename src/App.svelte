@@ -54,7 +54,7 @@
   }
 
   header {
-    margin-top: 1em;
+    margin: 0.5em;
     font-size: 0.94em;
   }
 
@@ -63,8 +63,6 @@
     border: none;
   }
   option {
-    user-select: none;
-    font-size: 16px;
   }
 
   ul {
@@ -74,14 +72,16 @@
   }
 
   .tune {
-    margin: 1em;
-    border: 2px solid white;
+    margin: 0.5em;
+    border: 1.5px solid white;
     padding: 1em;
     background-color: rgb(255, 255, 255);
+    font-size: 0.75em;
   }
 
   .selected {
-    border: 2px solid #15232c;
+    border: 1.5px solid #0866a0;
+    color: #052031;
     background-color: #e1eff8;
   }
 
