@@ -1,12 +1,16 @@
 <script>
+  import { TUNES } from "../constants/tunes.js";
+  import { FILTERS } from "../constants/filters.js";
+  import { SORTS } from "../constants/sorts.js";
   import { filter, sort } from "../constants/functions.js";
+  import DropMenu from "./DropMenu.svelte";
 
-  export let TUNES;
-  export let FILTERS;
-  export let SORTS;
   export let currentFilter = "All";
   export let currentSort = "Title";
   $: sortedFilteredTunes = sort(filter(TUNES, currentFilter), currentSort);
+
+  export const setFilter = value => (currentFilter = value);
+  export const setSort = value => (currentSort = value);
 
   export function toggleSelected(tune) {
     const index = TUNES.indexOf(tune);
@@ -19,20 +23,12 @@
   }
 </script>
 
+<header>
+  <DropMenu items={FILTERS} currentItem={currentFilter} setItem={setFilter} />
+  <span>sorted by</span>
+  <DropMenu items={SORTS} currentItem={currentSort} setItem={setSort} />
+</header>
 <main>
-  <header>
-    <select on:change={e => (currentFilter = e.target.value)}>
-      {#each FILTERS as FILTER}
-        <option>{FILTER}</option>
-      {/each}
-    </select>
-    <span>sorted by</span>
-    <select on:change={e => (currentSort = e.target.value)}>
-      {#each SORTS as SORT}
-        <option>{SORT}</option>
-      {/each}
-    </select>
-  </header>
   <ul>
     {#each sortedFilteredTunes as tune}
       <li
@@ -46,23 +42,30 @@
 </main>
 
 <style>
-  main {
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    margin: 0 auto;
-  }
-
   header {
-    margin: 0.5em;
-    font-size: 0.94em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3em;
+    margin: 0;
+    padding: 0.5em;
+    display: flex;
+    justify-content: center;
+    background-color: inherit;
+    text-align: top;
+    z-index: 5;
   }
 
-  select {
-    margin: 0;
-    border: none;
+  span {
+    padding: 0 0.5em;
+    height: 2em;
+    line-height: 2em;
   }
-  option {
+
+  main {
+    margin: 3em auto 0;
+    padding: 0;
   }
 
   ul {
@@ -72,7 +75,7 @@
   }
 
   .tune {
-    margin: 0.5em;
+    margin: 0 0.5em 0.5em;
     border: 1.5px solid white;
     padding: 1em;
     background-color: rgb(255, 255, 255);
