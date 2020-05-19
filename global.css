@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;	
+}
+
 html, body {
 	position: relative;
 	width: 100%;
@@ -11,6 +15,7 @@ body {
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "Avenir", "Helvetica Neue", Arial, sans-serif;
+	text-align: center;
 }
 
 a {
