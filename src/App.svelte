@@ -24,9 +24,12 @@
 </script>
 
 <header>
-  <DropMenu items={FILTERS} currentItem={currentFilter} setItem={setFilter} />
+  <DropMenu
+    items={FILTERS}
+    currentItem={currentFilter}
+    setCurrent={setFilter} />
   <span>sorted by</span>
-  <DropMenu items={SORTS} currentItem={currentSort} setItem={setSort} />
+  <DropMenu items={SORTS} currentItem={currentSort} setCurrent={setSort} />
 </header>
 <main>
   <ul>
@@ -46,25 +49,26 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 3em;
+    width: calc(100% - 0.5em);
+    height: 2.5em;
     margin: 0;
-    padding: 0.5em;
+    padding: 0.5em 0.25em;
     display: flex;
-    justify-content: center;
     background-color: inherit;
     text-align: top;
     z-index: 5;
   }
 
   span {
-    padding: 0 0.5em;
-    height: 2em;
-    line-height: 2em;
+    padding: 0 0.1rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    font-size: 0.875em;
+    font-weight: 100;
   }
 
   main {
-    margin: 3em auto 0;
+    margin: 3.5em auto 0;
     padding: 0;
   }
 
